@@ -13,8 +13,8 @@ class QuizzesCell: UICollectionViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 17)
-        label.textColor = .white
-        label.backgroundColor = .gray
+        label.textColor = .black
+        label.backgroundColor = .white
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
@@ -23,9 +23,8 @@ class QuizzesCell: UICollectionViewCell {
     let optionsButton: UIButton = {
         let button = UIButton()
         button.clipsToBounds = true
-        button.setTitle("...", for: .normal)
-        button.backgroundColor = .gray
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 50)
+        let pic = UIImage(named: "more-filled")
+        button.setImage(pic, for: .normal)
         return button
     }()
     
@@ -34,6 +33,7 @@ class QuizzesCell: UICollectionViewCell {
         super.init(frame: frame)
         nameLabelConstraints()
          buttonConstraints()
+        backgroundColor = .white
     }
     
  
@@ -42,22 +42,20 @@ class QuizzesCell: UICollectionViewCell {
     }
 }
 extension QuizzesCell{
-    func nameLabelConstraints(){
-        addSubview(titleLabel)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 10).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-    }
     
     func buttonConstraints(){
         addSubview(optionsButton)
         optionsButton.translatesAutoresizingMaskIntoConstraints = false
-        
         optionsButton.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        optionsButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         optionsButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        optionsButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        
+        optionsButton.bottomAnchor.constraint(equalTo: titleLabel.topAnchor).isActive = true
+    }
+    
+    func nameLabelConstraints(){
+        addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
     }
 }

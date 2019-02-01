@@ -14,8 +14,8 @@ class SearchView: UIView {
     
     lazy var myCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-        layout.itemSize = CGSize(width: 400, height: 400)
+        layout.sectionInset = UIEdgeInsets(top:0, left: 0, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: 200, height: 300)
         var cv = UICollectionView(frame:  self.bounds, collectionViewLayout: layout)
         
         cv.showsVerticalScrollIndicator = false
@@ -36,13 +36,10 @@ class SearchView: UIView {
     }
     
     private func commonInit() {
-        setupViews()
+       setConstraints()
         myCollectionView.register(SearchCell.self, forCellWithReuseIdentifier: searchCellId)
     }
     
-    private func setupViews(){
-        setConstraints()
-    }
     
     private func setConstraints(){
         addSubview(myCollectionView)

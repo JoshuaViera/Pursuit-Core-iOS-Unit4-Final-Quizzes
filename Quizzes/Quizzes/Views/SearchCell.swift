@@ -13,25 +13,25 @@ class SearchCell: UICollectionViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 17)
-        label.textColor = .white
-        label.backgroundColor = .gray
+        label.textColor = .black
+        label.backgroundColor = .white
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
     }()
     
-    let optionsButton: UIButton = {
+    let addButton: UIButton = {
         let button = UIButton()
         button.clipsToBounds = true
-        button.setTitle("...", for: .normal)
-        button.backgroundColor = .gray
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 50)
+        let pic = UIImage(named: "add-icon-filled")
+        button.setImage(pic, for: .normal)
         return button
     }()
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .white
         titleLabelConstraints()
         optionsButtonConstraints()
     }
@@ -43,21 +43,19 @@ class SearchCell: UICollectionViewCell {
 }
 extension SearchCell{
     func optionsButtonConstraints(){
-        addSubview(optionsButton)
-         optionsButton.translatesAutoresizingMaskIntoConstraints = false
-         optionsButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 10).isActive = true
-         optionsButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-         optionsButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        addSubview(addButton)
+        addButton.translatesAutoresizingMaskIntoConstraints = false
+        addButton.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        addButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        addButton.bottomAnchor.constraint(equalTo: titleLabel.topAnchor).isActive = true
     }
     
     func titleLabelConstraints(){
         addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        titleLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
         
     }
 }
