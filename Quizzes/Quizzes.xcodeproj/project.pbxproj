@@ -31,6 +31,7 @@
 		61AACDC72204C8D10085973C /* Quizzes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AACDC62204C8D10085973C /* Quizzes.swift */; };
 		61AACDCD2204CD870085973C /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AACDCC2204CD870085973C /* APIClient.swift */; };
 		61AACDF32205249B0085973C /* DataPersistenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AACDF22205249B0085973C /* DataPersistenceModel.swift */; };
+		61AACDF52205FA940085973C /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AACDF42205FA940085973C /* QuizModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		61AACDC62204C8D10085973C /* Quizzes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quizzes.swift; sourceTree = "<group>"; };
 		61AACDCC2204CD870085973C /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		61AACDF22205249B0085973C /* DataPersistenceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersistenceModel.swift; sourceTree = "<group>"; };
+		61AACDF42205FA940085973C /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				61AACDC62204C8D10085973C /* Quizzes.swift */,
+				61AACDF42205FA940085973C /* QuizModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				61AACDA622049E7A0085973C /* CreateQuizzesVC.swift in Sources */,
 				61AACDBE2204AC500085973C /* SearchView.swift in Sources */,
 				577118DF22037BAA00B9DD0B /* String+DateExtensions.swift in Sources */,
+				61AACDF52205FA940085973C /* QuizModel.swift in Sources */,
 				577118DD22037B8E00B9DD0B /* Date+Extensions.swift in Sources */,
 				61AACDC02204AC5B0085973C /* QuizzesView.swift in Sources */,
 				61AACDB42204A1730085973C /* QuizzesCell.swift in Sources */,

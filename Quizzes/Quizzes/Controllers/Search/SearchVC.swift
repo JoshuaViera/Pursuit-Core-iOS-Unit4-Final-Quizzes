@@ -20,6 +20,13 @@ class SearchVC: UIViewController {
             }
         }
     }
+    var quizzes = [Quiz](){
+        didSet{
+            DispatchQueue.main.async {
+                self.searchview.myCollectionView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +34,12 @@ class SearchVC: UIViewController {
         searchview.myCollectionView.delegate = self
         searchview.myCollectionView.dataSource = self
         getData()
+        setItems()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        setItems()
+        self.searchview.myCollectionView.reloadData()
+    }
     func getData() {
         APIClient.getQuizQuestions { (error, quiz) in
             if let error = error {
@@ -41,15 +52,37 @@ class SearchVC: UIViewController {
             }
         }
     }
+    func setItems() {
+        self.searchview.myCollectionView.reloadData()
+        self.quizzes = QuizModel.getItems()
+    }
     
-    @objc func buttonPressed(sender: UIButton){
+    @objc func addPhotoButtonPressed(sender: UIButton){
         let index = sender.tag
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (alert) in
             self.dismiss(animated: true, completion: nil)
         }
         
+        let save = UIAlertAction(title: "Save", style: .default) { (alert) in
+            self.setItems()
+        }
+        
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "QuizzesVC") as? QuizzesVC else {return}
+//        navigationController?.pushViewController(vc, animated: true)
+        self.setItems()
+        let itemDescription = allQuizzes[index].quizTitle
+        let date = Date()
+        let isoDateFormatter = ISO8601DateFormatter()
+        isoDateFormatter.formatOptions = [.withFullDate ,.withFullTime,.withInternetDateTime, .withTimeZone,.withDashSeparatorInDate]
+        let timeStamp = isoDateFormatter.string(from: date)
+        let item = Quiz.init(description: itemDescription, createdAt: timeStamp)
+        
+        QuizModel.addItem(item: item)
         actionSheet.addAction(cancel)
+        actionSheet.addAction(save)
         present(actionSheet, animated: true, completion: nil)
     }
     
@@ -63,7 +96,7 @@ extension SearchVC : UICollectionViewDelegate, UICollectionViewDataSource {
         let cell = searchview.myCollectionView.dequeueReusableCell(withReuseIdentifier: searchCellId, for: indexPath) as! SearchCell
         cell.titleLabel.text = allQuizzes[indexPath.row].quizTitle
         cell.addButton.tag = indexPath.row
-        cell.addButton.addTarget(self, action: #selector(buttonPressed(sender:)), for: .touchUpInside )
+        cell.addButton.addTarget(self, action: #selector(addPhotoButtonPressed(sender:)), for: .touchUpInside )
         
         return cell
     }

@@ -10,23 +10,34 @@ import UIKit
 
 class ProfileVC: UIViewController {
 
+    @IBOutlet weak var profileImage: UIImageView!
+    let imagePicker =  UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        imagePicker.delegate = self
         title = "Profile"
-        // Do any additional setup after loading the view.
+    }
+
+    @IBAction func addProfileImage(_ sender: UIButton) {
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+    }
+}
+extension ProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        print("\ninfo: \(info)\n")
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            profileImage.image = image
+            //            imageWasSelected = true
+        } else {
+            print("original image is nil")
+        }
+        dismiss(animated: true, completion: nil)
     }
-    */
-
 }
+

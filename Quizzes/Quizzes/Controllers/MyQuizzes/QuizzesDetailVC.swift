@@ -12,7 +12,7 @@ class QuizzesDetailVC: UIViewController {
     
     var quizDetailView = QuizzesDetailView()
     var quizFacts = [String]()
-    var quiz = [Quizzes]()
+    var quiz = ""
     var quizDetailCellId = "detail"
     override func viewDidLoad() {
         super.viewDidLoad()

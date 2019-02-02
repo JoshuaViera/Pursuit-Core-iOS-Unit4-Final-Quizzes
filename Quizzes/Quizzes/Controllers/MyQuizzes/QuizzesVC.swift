@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum Functions {
+    case edit
+    case save
+}
+
 class QuizzesVC: UIViewController {
     
     var quizview = QuizzesView()
@@ -19,12 +24,20 @@ class QuizzesVC: UIViewController {
             }
         }
     }
-    
+    var items = [Quiz](){
+        didSet{
+            DispatchQueue.main.async {
+                self.quizview.myCollectionView.reloadData()
+            }
+        }
+    }
+    var functions: Functions!
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(quizview)
         quizview.myCollectionView.delegate = self
         quizview.myCollectionView.dataSource = self
+        print(DataPersistenceManager.documentsDirectory())
         getData()
     }
     
@@ -47,30 +60,39 @@ class QuizzesVC: UIViewController {
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (alert) in
             self.dismiss(animated: true, completion: nil)
         }
+        let delete = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            QuizModel.delete(atIndex: index)
+        }
+        actionSheet.addAction(delete)
         actionSheet.addAction(cancel)
         present(actionSheet, animated: true, completion: nil)
     }
 }
+
+
+
 extension QuizzesVC : UICollectionViewDataSource, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return allQuizzes.count
+        return QuizModel.getItems().count
+//        return allQuizzes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = quizview.myCollectionView.dequeueReusableCell(withReuseIdentifier: quizCellId, for: indexPath) as! QuizzesCell
-        let quiz = allQuizzes[indexPath.row]
-        cell.titleLabel.text = quiz.quizTitle
-        
+//        let quiz = items[indexPath.row]
+//        cell.titleLabel.text = quiz.description
         cell.optionsButton.tag = indexPath.row
-        cell.optionsButton.addTarget(self, action: #selector(buttonPressed(sender:)), for: .touchUpInside )
+        cell.optionsButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside )
         
         return cell
         
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let title = allQuizzes[indexPath.row].facts
+        let title = allQuizzes[indexPath.row].quizTitle
+        let facts = allQuizzes[indexPath.row].facts
         let detailVC = QuizzesDetailVC()
-        detailVC.quizFacts = title
+        detailVC.quizFacts = facts
+        detailVC.quiz = title
         navigationController?.pushViewController(detailVC, animated: true)
     }
     
