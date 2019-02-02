@@ -42,6 +42,16 @@ class SearchVC: UIViewController {
         }
     }
     
+    @objc func buttonPressed(sender: UIButton){
+        let index = sender.tag
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (alert) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        actionSheet.addAction(cancel)
+        present(actionSheet, animated: true, completion: nil)
+    }
     
 }
 extension SearchVC : UICollectionViewDelegate, UICollectionViewDataSource {
@@ -52,6 +62,9 @@ extension SearchVC : UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = searchview.myCollectionView.dequeueReusableCell(withReuseIdentifier: searchCellId, for: indexPath) as! SearchCell
         cell.titleLabel.text = allQuizzes[indexPath.row].quizTitle
+        cell.addButton.tag = indexPath.row
+        cell.addButton.addTarget(self, action: #selector(buttonPressed(sender:)), for: .touchUpInside )
+        
         return cell
     }
     

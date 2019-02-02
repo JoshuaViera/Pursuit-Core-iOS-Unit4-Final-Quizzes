@@ -40,6 +40,16 @@ class QuizzesVC: UIViewController {
             }
         }
     }
+    
+    @objc func buttonPressed(sender: UIButton){
+        let index = sender.tag
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (alert) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        actionSheet.addAction(cancel)
+        present(actionSheet, animated: true, completion: nil)
+    }
 }
 extension QuizzesVC : UICollectionViewDataSource, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -50,9 +60,18 @@ extension QuizzesVC : UICollectionViewDataSource, UICollectionViewDelegate{
         let cell = quizview.myCollectionView.dequeueReusableCell(withReuseIdentifier: quizCellId, for: indexPath) as! QuizzesCell
         let quiz = allQuizzes[indexPath.row]
         cell.titleLabel.text = quiz.quizTitle
+        
+        cell.optionsButton.tag = indexPath.row
+        cell.optionsButton.addTarget(self, action: #selector(buttonPressed(sender:)), for: .touchUpInside )
+        
         return cell
         
     }
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let title = allQuizzes[indexPath.row].facts
+        let detailVC = QuizzesDetailVC()
+        detailVC.quizFacts = title
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
     
 }
