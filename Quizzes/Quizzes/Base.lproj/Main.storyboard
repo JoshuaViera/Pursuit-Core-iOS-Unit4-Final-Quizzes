@@ -157,9 +157,13 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmP-dh-3QR">
                                 <rect key="frame" x="0.0" y="333" width="375" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="@loginName"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pg-7S-SLA">
+                                <rect key="frame" x="0.0" y="60" width="375" height="263"/>
                                 <connections>
-                                    <action selector="addProfileImage:" destination="Crz-7p-fv7" eventType="touchUpInside" id="Jbe-ng-Jab"/>
+                                    <action selector="profileImage:" destination="Crz-7p-fv7" eventType="touchUpInside" id="6K3-ub-jNg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -168,24 +172,29 @@
                             <constraint firstItem="b1B-PW-f5w" firstAttribute="trailing" secondItem="UPb-ja-WBH" secondAttribute="trailing" id="409-BJ-Bmu"/>
                             <constraint firstItem="dmP-dh-3QR" firstAttribute="top" secondItem="UPb-ja-WBH" secondAttribute="bottom" constant="10" id="FQV-0B-5FV"/>
                             <constraint firstItem="b1B-PW-f5w" firstAttribute="trailing" secondItem="dmP-dh-3QR" secondAttribute="trailing" id="IE3-Tg-cbB"/>
+                            <constraint firstItem="2pg-7S-SLA" firstAttribute="top" secondItem="rLd-LP-SCx" secondAttribute="bottom" constant="9" id="Mnd-ij-tOK"/>
                             <constraint firstItem="b1B-PW-f5w" firstAttribute="trailing" secondItem="rLd-LP-SCx" secondAttribute="trailing" constant="266" id="RA8-69-e03"/>
                             <constraint firstItem="UPb-ja-WBH" firstAttribute="leading" secondItem="b1B-PW-f5w" secondAttribute="leading" id="UXb-Of-LOC"/>
                             <constraint firstItem="UPb-ja-WBH" firstAttribute="centerY" secondItem="b1B-PW-f5w" secondAttribute="centerY" multiplier="0.6" id="a12-1H-lgV"/>
                             <constraint firstItem="dmP-dh-3QR" firstAttribute="leading" secondItem="b1B-PW-f5w" secondAttribute="leading" id="f9z-aZ-dag"/>
                             <constraint firstItem="rLd-LP-SCx" firstAttribute="top" secondItem="b1B-PW-f5w" secondAttribute="top" constant="10" id="fny-dk-cOt"/>
                             <constraint firstItem="UPb-ja-WBH" firstAttribute="top" secondItem="b1B-PW-f5w" secondAttribute="top" constant="40" id="rAR-OF-wpj"/>
+                            <constraint firstItem="dmP-dh-3QR" firstAttribute="top" secondItem="2pg-7S-SLA" secondAttribute="bottom" constant="10" id="s1O-is-W2C"/>
+                            <constraint firstItem="2pg-7S-SLA" firstAttribute="leading" secondItem="b1B-PW-f5w" secondAttribute="leading" id="sq5-ls-Fpe"/>
                             <constraint firstItem="rLd-LP-SCx" firstAttribute="leading" secondItem="b1B-PW-f5w" secondAttribute="leading" constant="10" id="uWL-rh-Ils"/>
+                            <constraint firstItem="2pg-7S-SLA" firstAttribute="trailing" secondItem="b1B-PW-f5w" secondAttribute="trailing" id="xJK-eo-xyN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="b1B-PW-f5w"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" id="CUM-wp-dgy"/>
                     <connections>
                         <outlet property="profileImage" destination="UPb-ja-WBH" id="WCR-FB-Akn"/>
+                        <outlet property="profileName" destination="dmP-dh-3QR" id="4FA-Di-QUa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fa2-SB-8DK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1356" y="894"/>
+            <point key="canvasLocation" x="1356" y="893.70314842578716"/>
         </scene>
         <!--My Collection-->
         <scene sceneID="76c-0P-iCI">

@@ -16,6 +16,7 @@
 		577118DA22037B5B00B9DD0B /* DataPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577118D922037B5B00B9DD0B /* DataPersistenceManager.swift */; };
 		577118DD22037B8E00B9DD0B /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577118DC22037B8E00B9DD0B /* Date+Extensions.swift */; };
 		577118DF22037BAA00B9DD0B /* String+DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577118DE22037BAA00B9DD0B /* String+DateExtensions.swift */; };
+		614B759222088421009F1ED7 /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B759122088421009F1ED7 /* UserDefaultKeys.swift */; };
 		61AACDA622049E7A0085973C /* CreateQuizzesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AACDA522049E7A0085973C /* CreateQuizzesVC.swift */; };
 		61AACDA822049E890085973C /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AACDA722049E890085973C /* SearchVC.swift */; };
 		61AACDAA22049EA40085973C /* QuizzesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AACDA922049EA40085973C /* QuizzesVC.swift */; };
@@ -30,7 +31,6 @@
 		61AACDC52204AD750085973C /* CreateQuizzesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AACDC42204AD750085973C /* CreateQuizzesView.swift */; };
 		61AACDC72204C8D10085973C /* Quizzes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AACDC62204C8D10085973C /* Quizzes.swift */; };
 		61AACDCD2204CD870085973C /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AACDCC2204CD870085973C /* APIClient.swift */; };
-		61AACDF32205249B0085973C /* DataPersistenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AACDF22205249B0085973C /* DataPersistenceModel.swift */; };
 		61AACDF52205FA940085973C /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AACDF42205FA940085973C /* QuizModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +46,7 @@
 		577118D922037B5B00B9DD0B /* DataPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersistenceManager.swift; sourceTree = "<group>"; };
 		577118DC22037B8E00B9DD0B /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		577118DE22037BAA00B9DD0B /* String+DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DateExtensions.swift"; sourceTree = "<group>"; };
+		614B759122088421009F1ED7 /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		61AACDA522049E7A0085973C /* CreateQuizzesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuizzesVC.swift; sourceTree = "<group>"; };
 		61AACDA722049E890085973C /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		61AACDA922049EA40085973C /* QuizzesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzesVC.swift; sourceTree = "<group>"; };
@@ -60,7 +61,6 @@
 		61AACDC42204AD750085973C /* CreateQuizzesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuizzesView.swift; sourceTree = "<group>"; };
 		61AACDC62204C8D10085973C /* Quizzes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quizzes.swift; sourceTree = "<group>"; };
 		61AACDCC2204CD870085973C /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
-		61AACDF22205249B0085973C /* DataPersistenceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersistenceModel.swift; sourceTree = "<group>"; };
 		61AACDF42205FA940085973C /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,7 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				577118D922037B5B00B9DD0B /* DataPersistenceManager.swift */,
-				61AACDF22205249B0085973C /* DataPersistenceModel.swift */,
 			);
 			path = "File Manager Helpers";
 			sourceTree = "<group>";
@@ -171,6 +170,7 @@
 		61AACDA422049DE80085973C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				614B759122088421009F1ED7 /* UserDefaultKeys.swift */,
 				61AACDC62204C8D10085973C /* Quizzes.swift */,
 				61AACDF42205FA940085973C /* QuizModel.swift */,
 			);
@@ -297,12 +297,12 @@
 				61AACDCD2204CD870085973C /* APIClient.swift in Sources */,
 				61AACDBA2204ABFE0085973C /* QuizzesDetailCell.swift in Sources */,
 				61AACDAC22049EB30085973C /* ProfileVC.swift in Sources */,
-				61AACDF32205249B0085973C /* DataPersistenceModel.swift in Sources */,
 				61AACDC22204AC690085973C /* QuizzesDetailView.swift in Sources */,
 				61AACDAA22049EA40085973C /* QuizzesVC.swift in Sources */,
 				61AACDA822049E890085973C /* SearchVC.swift in Sources */,
 				577118D722037ABA00B9DD0B /* NetworkHelper.swift in Sources */,
 				61AACDC72204C8D10085973C /* Quizzes.swift in Sources */,
+				614B759222088421009F1ED7 /* UserDefaultKeys.swift in Sources */,
 				577118C12203796A00B9DD0B /* AppDelegate.swift in Sources */,
 				577118D522037A9F00B9DD0B /* AppError.swift in Sources */,
 				577118DA22037B5B00B9DD0B /* DataPersistenceManager.swift in Sources */,

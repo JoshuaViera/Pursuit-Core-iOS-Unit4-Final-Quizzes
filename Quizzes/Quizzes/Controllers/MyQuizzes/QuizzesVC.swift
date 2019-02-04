@@ -8,11 +8,6 @@
 
 import UIKit
 
-enum Functions {
-    case edit
-    case save
-}
-
 class QuizzesVC: UIViewController {
     
     var quizview = QuizzesView()
@@ -31,7 +26,7 @@ class QuizzesVC: UIViewController {
             }
         }
     }
-    var functions: Functions!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(quizview)
@@ -62,10 +57,17 @@ class QuizzesVC: UIViewController {
         }
         let delete = UIAlertAction(title: "Delete", style: .destructive) { (action) in
             QuizModel.delete(atIndex: index)
+            self.items = QuizModel.getItems()
+            self.quizview.myCollectionView.reloadData()
         }
         actionSheet.addAction(delete)
         actionSheet.addAction(cancel)
         present(actionSheet, animated: true, completion: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        quizview.myCollectionView.reloadData()
+        items = QuizModel.getItems()
     }
 }
 
@@ -74,16 +76,14 @@ class QuizzesVC: UIViewController {
 extension QuizzesVC : UICollectionViewDataSource, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return QuizModel.getItems().count
-//        return allQuizzes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = quizview.myCollectionView.dequeueReusableCell(withReuseIdentifier: quizCellId, for: indexPath) as! QuizzesCell
-//        let quiz = items[indexPath.row]
-//        cell.titleLabel.text = quiz.description
+
+        cell.titleLabel.text = "Facts\(indexPath.row)"
         cell.optionsButton.tag = indexPath.row
         cell.optionsButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside )
-        
         return cell
         
     }
@@ -92,7 +92,7 @@ extension QuizzesVC : UICollectionViewDataSource, UICollectionViewDelegate{
         let facts = allQuizzes[indexPath.row].facts
         let detailVC = QuizzesDetailVC()
         detailVC.quizFacts = facts
-        detailVC.quiz = title
+        detailVC.quizTitle = title
         navigationController?.pushViewController(detailVC, animated: true)
     }
     

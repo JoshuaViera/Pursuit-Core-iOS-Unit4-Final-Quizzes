@@ -12,7 +12,7 @@ class QuizzesDetailVC: UIViewController {
     
     var quizDetailView = QuizzesDetailView()
     var quizFacts = [String]()
-    var quiz = ""
+    var quizTitle = ""
     var quizDetailCellId = "detail"
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,8 @@ extension QuizzesDetailVC : UICollectionViewDelegate, UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = quizDetailView.myCollectionView.dequeueReusableCell(withReuseIdentifier: quizDetailCellId, for: indexPath) as! QuizzesDetailCell
-         cell.titleLabel.text = quizFacts[indexPath.row]
+//         cell.titleLabel.text = quizFacts[indexPath.row]
+        cell.titleLabel.text = quizTitle
         return cell
     }
     
