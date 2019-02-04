@@ -91,8 +91,22 @@
                         <viewLayoutGuide key="safeArea" id="SF2-D6-vFr"/>
                     </view>
                     <navigationItem key="navigationItem" title="Create Quiz" id="vi4-s6-Zcf">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="TKz-Eb-iJh"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="OYt-2E-uZ7">
+                            <connections>
+                                <action selector="cancelButton:" destination="DNs-td-cPJ" id="h9A-7D-ZZZ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="TKz-Eb-iJh">
+                            <connections>
+                                <action selector="createPostButton:" destination="DNs-td-cPJ" id="fdb-Gb-uvf"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="factOneTextView" destination="lkU-KI-53e" id="voG-rr-jay"/>
+                        <outlet property="factTwoTextView" destination="emg-DR-gcj" id="52x-7G-wVU"/>
+                        <outlet property="titleTextField" destination="5eb-1N-2nd" id="E2X-nz-Kf5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o6X-kE-rxr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
